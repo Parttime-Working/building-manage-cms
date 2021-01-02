@@ -7,6 +7,9 @@ class BackendService {
     this.client = axios.create({
       baseURL: url,
       timeout: 60000,
+      headers: {
+        "content-type": "application/json",
+      },
     });
   }
 
@@ -55,4 +58,4 @@ class BackendService {
   }
 }
 
-export default new BackendService(API);
+export const backendService = new BackendService(API);

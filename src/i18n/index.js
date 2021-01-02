@@ -8,6 +8,30 @@ const resources = {
       common: {
         username: "名稱",
         password: "密碼",
+        submit: "提交",
+      },
+      loginForm: {
+        remember: "記住我",
+        errorMessages: {
+          usernameRequired: "請輸入名稱!",
+          passwordRequired: "請輸入密碼!",
+        },
+      },
+    },
+  },
+  en: {
+    translation: {
+      common: {
+        username: "Username",
+        password: "Password",
+        submit: "Submit",
+      },
+      loginForm: {
+        remember: "Remember me",
+        errorMessages: {
+          usernameRequired: "Please input your username!",
+          passwordRequired: "Please input your password!",
+        },
       },
     },
   },
