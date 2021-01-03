@@ -1,10 +1,9 @@
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import Sider from "antd/lib/layout/Sider";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useProvideAuth } from "../hooks/useProvideAuth";
-import { isNilOrEmpty } from "../utils/common";
 
 export const Nav = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);

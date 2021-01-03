@@ -9,6 +9,7 @@ const resources = {
         username: "名稱",
         password: "密碼",
         submit: "提交",
+        copyright: "©2020 AoiYamada 版權所有",
       },
       loginForm: {
         remember: "記住我",
@@ -25,6 +26,7 @@ const resources = {
         username: "Username",
         password: "Password",
         submit: "Submit",
+        copyright: "©2020 Created by AoiYamada",
       },
       loginForm: {
         remember: "Remember me",

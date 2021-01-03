@@ -43,10 +43,9 @@ export const useProvideAuth = () => {
     }
   }, [removeCurrentUser]);
 
-  const isAuthenticated = () => {
-    console.log(currentUser);
-    return !isNilOrEmpty(currentUser);
-  };
+  const isAuthenticated = useCallback(() => !isNilOrEmpty(currentUser), [
+    currentUser,
+  ]);
 
   return {
     login,
