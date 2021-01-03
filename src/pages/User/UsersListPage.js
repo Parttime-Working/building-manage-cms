@@ -17,53 +17,6 @@ const ClickableCell = styled.div`
   cursor: pointer;
 `;
 
-const data = {
-  total: 10,
-  totalPages: 1,
-  items: [
-    {
-      no: 1,
-      username: "AoiYamada1x",
-    },
-    {
-      no: 3,
-      username: "AoiYamada2",
-    },
-    {
-      no: 4,
-      username: "AoiYamada3",
-    },
-    {
-      no: 6,
-      username: "AoiYamada4",
-    },
-    {
-      no: 7,
-      username: "AoiYamada5",
-    },
-    {
-      no: 8,
-      username: "AoiYamada6",
-    },
-    {
-      no: 9,
-      username: "AoiYamada7",
-    },
-    {
-      no: 10,
-      username: "AoiYamada8",
-    },
-    {
-      no: 11,
-      username: "AoiYamada9",
-    },
-    {
-      no: 13,
-      username: "AoiYamada11",
-    },
-  ],
-};
-
 export const UsersListPage = () => {
   const { path } = useRouteMatch();
   const history = useHistory();
