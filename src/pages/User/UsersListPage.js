@@ -1,7 +1,9 @@
-import { Layout, PageHeader, Pagination, List, Table } from "antd";
-import { Content, Footer, Header } from "antd/lib/layout/layout";
+import { Layout, PageHeader, Table } from "antd";
+import { Content } from "antd/lib/layout/layout";
+import { useEffect, useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
+import { useFetchUsers } from "../../hooks/useFetchUsers";
 
 const FullPageLayout = styled(Layout)`
   min-height: 100%;
@@ -9,19 +11,11 @@ const FullPageLayout = styled(Layout)`
   max-width: 100%;
 `;
 
-const userColumns = [
-  {
-    title: "No",
-    dataIndex: "no",
-    sorter: true,
-    render: (no) => `# ${no}`,
-    width: "20%",
-  },
-  {
-    title: "Username",
-    dataIndex: "username",
-  },
-];
+const ClickableCell = styled.div`
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+`;
 
 const data = {
   total: 10,
@@ -71,12 +65,42 @@ const data = {
 };
 
 export const UsersListPage = () => {
-  let { path } = useRouteMatch();
+  const { path } = useRouteMatch();
   const history = useHistory();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageSize, setCurrentPageSize] = useState(10);
 
-  const handleTableChange = (...args) => {
-    console.log(args);
+  const { userPage, fetchUsers, isLoading } = useFetchUsers();
+
+  const userColumns = [
+    {
+      title: "No",
+      dataIndex: "no",
+      sorter: true,
+      render: (no) => <ClickableCell># {no}</ClickableCell>,
+      width: "20%",
+    },
+    {
+      title: "Username",
+      dataIndex: "username",
+      render: (username) => <ClickableCell>{username}</ClickableCell>,
+    },
+  ];
+
+  const handleTableChange = async ({ current: page, pageSize }) => {
+    setCurrentPage(page);
+    setCurrentPageSize(pageSize);
+
+    try {
+      await fetchUsers({ page, pageSize });
+    } catch (error) {
+      // Todo: error handling
+    }
   };
+
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
 
   return (
     <FullPageLayout>
@@ -90,13 +114,16 @@ export const UsersListPage = () => {
               history.push(`${path}/${no}`);
             },
           })}
-          dataSource={data.items}
+          dataSource={userPage.items}
           pagination={{
-            current: 1,
-            pageSize: 10,
-            total: 200,
+            current: currentPage,
+            pageSize: currentPageSize,
+            total: userPage.total,
+            position: ["topRight", "bottomRight"],
+            showSizeChanger: true,
+            pageSizeOptions: [5, 10, 20],
           }}
-          loading={false}
+          loading={isLoading}
           onChange={handleTableChange}
         />
       </Content>

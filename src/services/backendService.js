@@ -26,13 +26,13 @@ class BackendService {
     return this.client.post("/auth/logout");
   }
 
-  async listUsers({ page = 1, pageSize = 10, filter }) {
+  async listUsers({ page = 1, pageSize = 10, filter = {} } = {}) {
     // TODO: implement filter
     return this.client.get("/users", {
       params: {
         page,
         pageSize,
-        filter,
+        // filter,
       },
     });
   }

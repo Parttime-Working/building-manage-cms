@@ -1,14 +1,10 @@
 // Copy from https://ant.design/components/form/
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Form, Input, Button, Checkbox, Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
 import { useProvideAuth } from "../../hooks/useProvideAuth";
 import { useHistory } from "react-router-dom";
-
-const antIcon = <LoadingOutlined spin />;
 
 const StyledForm = styled(Form)`
   padding: 3em;
@@ -52,7 +48,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Spin size="large" indicator={antIcon} spinning={isLoading}>
+    <Spin size="large" spinning={isLoading}>
       <StyledForm
         {...layout}
         name="basic"
