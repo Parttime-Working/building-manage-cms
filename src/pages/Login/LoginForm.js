@@ -5,10 +5,10 @@ import { Form, Input, Button, Checkbox, Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
-import { useLogin } from "../../hooks/useLogin";
-import { isNilOrEmpty } from "../../utils/common";
+import { useProvideAuth } from "../../hooks/useProvideAuth";
+import { useHistory } from "react-router-dom";
 
-const antIcon = <LoadingOutlined style={{ fontSize: 30 }} spin />;
+const antIcon = <LoadingOutlined spin />;
 
 const StyledForm = styled(Form)`
   padding: 3em;
@@ -33,37 +33,26 @@ const tailLayout = {
 
 const LoginForm = () => {
   const { t } = useTranslation();
-  const {
-    login,
-    isLoading,
-    // currentUser,
-    loginError,
-  } = useLogin();
+  const history = useHistory();
+
+  const { login, isLoading } = useProvideAuth();
 
   // onFinish is on form validation finished, same as onFinishFailed
   const onFinish = async (values) => {
-    await login(values);
+    try {
+      await login(values);
+      history.push("/users");
+    } catch (error) {
+      // Todo: handle login fail
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
     // console.log("Failed:", errorInfo);
   };
 
-  // useEffect(() => {
-  //   if (!isNilOrEmpty(currentUser)) {
-  //     console.log("currentUser", currentUser);
-  //   }
-  // }, [currentUser]);
-
-  useEffect(() => {
-    if (!isNilOrEmpty(loginError)) {
-      // TODO: show login fail
-      console.log("loginError:", loginError);
-    }
-  }, [loginError]);
-
   return (
-    <Spin indicator={antIcon} spinning={isLoading}>
+    <Spin size="large" indicator={antIcon} spinning={isLoading}>
       <StyledForm
         {...layout}
         name="basic"

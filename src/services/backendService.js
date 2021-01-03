@@ -8,8 +8,10 @@ class BackendService {
       baseURL: url,
       timeout: 60000,
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": "true",
       },
+      withCredentials: true,
     });
   }
 

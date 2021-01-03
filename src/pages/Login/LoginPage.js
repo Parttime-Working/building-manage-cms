@@ -9,14 +9,10 @@ const FormContainer = styled.div`
   margin: 15% auto;
 `;
 
-const Login = () => {
+export const LoginPage = () => {
   return (
-    <>
-      <FormContainer>
-        <LoginForm />
-      </FormContainer>
-    </>
+    <FormContainer>
+      <LoginForm />
+    </FormContainer>
   );
 };
-
-export default Login;

@@ -5,10 +5,13 @@ import "antd/dist/antd.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./i18n";
+import { ProvideAuth } from "./components/ProvideAuth";
 
 ReactDOM.render(
   <StrictMode>
-    <App />
+    <ProvideAuth>
+      <App />
+    </ProvideAuth>
   </StrictMode>,
   document.getElementById("root")
 );
