@@ -2,7 +2,7 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { UsersListPage, UserEditPage } from "../pages/User";
 
 export const UserRouter = () => {
-  let { path } = useRouteMatch();
+  const { path } = useRouteMatch();
 
   return (
     <Switch>

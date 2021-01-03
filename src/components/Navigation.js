@@ -14,8 +14,8 @@ export const Nav = () => {
     setIsCollapsed(collapsed);
   };
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
+  const handleLogout = async (event) => {
+    event.preventDefault();
 
     try {
       await logout();

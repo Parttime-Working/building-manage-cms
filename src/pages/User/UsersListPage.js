@@ -1,5 +1,6 @@
 import { Layout, PageHeader, Pagination, List, Table } from "antd";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 
 const FullPageLayout = styled(Layout)`
@@ -70,6 +71,9 @@ const data = {
 };
 
 export const UsersListPage = () => {
+  let { path } = useRouteMatch();
+  const history = useHistory();
+
   const handleTableChange = (...args) => {
     console.log(args);
   };
@@ -81,6 +85,11 @@ export const UsersListPage = () => {
         <Table
           columns={userColumns}
           rowKey={({ no }) => no}
+          onRow={({ no }) => ({
+            onDoubleClick: (event) => {
+              history.push(`${path}/${no}`);
+            },
+          })}
           dataSource={data.items}
           pagination={{
             current: 1,
