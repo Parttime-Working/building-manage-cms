@@ -5,12 +5,6 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import { useFetchUsers } from "../../hooks/useFetchUsers";
 
-const FullPageLayout = styled(Layout)`
-  min-height: 100%;
-  min-width: 100%;
-  max-width: 100%;
-`;
-
 const ClickableCell = styled.div`
   width: 100%;
   height: 100%;
@@ -56,9 +50,9 @@ export const UsersListPage = () => {
   }, [fetchUsers]);
 
   return (
-    <FullPageLayout>
+    <Layout>
       <PageHeader className="site-page-header" title="Users List" />
-      <Content style={{ margin: "0 16px" }}>
+      <Content>
         <Table
           columns={userColumns}
           rowKey={({ no }) => no}
@@ -80,6 +74,6 @@ export const UsersListPage = () => {
           onChange={handleTableChange}
         />
       </Content>
-    </FullPageLayout>
+    </Layout>
   );
 };

@@ -1,5 +1,6 @@
-import Layout, { Content, Footer, Header } from "antd/lib/layout/layout";
+import Layout, { Header } from "antd/lib/layout/layout";
 import { CopyrightFooter } from "../components/CopyrightFooter";
+import { MarginContent } from "../components/MarginContent";
 import { Nav } from "../components/Navigation";
 
 export const LoggedInLayout = ({ children }) => {
@@ -8,7 +9,7 @@ export const LoggedInLayout = ({ children }) => {
       <Nav />
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }} />
-        <Content style={{ margin: "0 16px" }}>{children}</Content>
+        <MarginContent>{children}</MarginContent>
         <CopyrightFooter />
       </Layout>
     </Layout>

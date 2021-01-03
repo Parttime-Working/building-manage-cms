@@ -5,7 +5,7 @@ export const LoggedOutLayout = ({ children }) => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header className="site-layout-background" style={{ padding: 0 }} />
-      <Content style={{ margin: "0 16px" }}>{children}</Content>
+      <Content>{children}</Content>
       <CopyrightFooter />
     </Layout>
   );
